@@ -1,0 +1,418 @@
+    JAVASCRIPT
+------------------
+
+
+used to make webpage dynamic
+-node js: javascript run time environment and js library
+-basic concept of js
+  -data type :tell the computer what kind of you are working
+   There are two type of data types
+    -Primitive:  they store simple value
+          -number-any number
+          -string - text or word
+          -boolean-(true or false)
+          undefined-variable with no value yet
+          -null-means "no value"
+          -bigInt-very big integar
+          -symbol-to create unique identifier
+    -Non-Primitive : they store complex value
+          -object - collection of data(key:value)pair
+
+
+ -to check type of data use "typeof" keyword
+ -console.log() -used to display content 
+ -creating variable in js
+      variable to store data
+
+          -using var keyword
+              syntax: var var_name/var var_name=
+              value
+
+          -using const keyword
+               syntax const var_name=value
+
+          -using let keyword
+               syntax: let var_name/ let var_name=
+              value
+
+
+               
+
+
+-identifier : a unique name created by the developer to define variable , class, function etc...
+    -rules for creating identifier  
+         - can have letter digits and underscore
+         -start with either letter or underscore
+         keyword cannot be used as an identifier
+
+-hoisting : accessing variable /function before declaration
+-difference between different variable
+
+-var
+-----
+-create using var keyword
+-re-assign with any type of value
+-global scope
+-hoisted with a value undefined
+
+
+const
+-----
+-use const keyword
+-cannot reassign its  value
+-block scope
+
+
+let
+------
+-use let keyword
+-can reassign its value
+-block scope
+-hoisted without value
+
+
+operators in js
+----------------
+-Assignment operators(=)
+-Arithmetic operator(+,-,*,/,%,**)
+-Realational operators(<,<=,>,>=,!=,==,===)
+-Logical operators(AND,OR,NOT)
+
+  
+ 
+     AND(&&)
+ ------------------
+ T && T  True 
+ T && F  false
+ F && T  false
+ F && F  false   
+ 
+
+     OR(||)
+ ------------------
+ T && T  True 
+ T && F  True
+ F && T  True
+ F && F  false  
+
+
+
+     NOT(!)
+------------------
+T! = false
+F! = True
+-
+
+
+-increment(++) Decrement(--) operators
+------------------------------------------
+
+-shorthand operators 
+   +=
+   -=
+    /=
+  truthy (&&)
+       syntax: condition && statement
+  -ternery operator (?:)
+        syntax: condition? true statements:false statements
+-spred operator(...):
+               used to combineiterating
+-Joining different type of data in JS
+        -using comma (,)
+        -using concantiation operator(+)
+        -using tempelate literals
+
+
+-Conditional statement in js
+       - if statements
+             syntax: if (condition  ){ statements} 
+             
+             else{
+               statements
+             }     
+             -else if ladder
+
+
+
+- Looping statement in js  
+      -while Loop
+           syntax:
+              1.Initialize a variable
+              2. while (condition){
+
+
+                statement to be executed while condition become true
+
+              3. update the iterating variable
+
+              }
+
+      -for Loop
+           syntax :
+                 for (Initialize a variable; condition;update variable){
+                  body of loop
+                 }        
+
+
+            
+-Function : used to perform specific task during the code 
+     -2 Parts
+       -function definition : defining the task to be perfomed 
+          syntax : function function_name (parameters){
+               function body
+          }
+     -function call to execute
+        syntax : function_name(arguments)
+
+-Types of function 
+      -Arrow function : alternative  for function definition
+          syntax :
+                 function_name=(parameter=>{
+                    function body
+                 })
+
+      -Pr-defined functions :
+          ex : console log(),math,ceil(),math.floor()
+          -Callback function : a function inside  a function cell . complete its execution only after   the conmpletion of function inside it
+
+    -Anonymous function : 
+           self-executing and nameless function 
+
+    -Nested function : 
+           a function definition inside another function definition       
+
+    -clousure property : 
+          It is the property of nested function in js . nested function can access global , parent and its own data
+
+     -reccurssive function :
+           calling a function inside its own function 
+                 
+
+
+  -Array : 
+        to hold multiple values in a single variable
+        - type of an array is an object
+        -to find total number of elements in an array use 'length' property
+             syntax : array_name.length
+
+         -to access an array elements use its index value 
+              syntax : array_name[index]
+
+        -accessing array elements 
+              -using for loop
+              -using for of loop
+              -using for-in loop
+
+     -Array Methods :
+             predefined methods to manipulate array data
+
+               -push(item):to add an item at the end of an array
+               -unshift(item) : to add an item at the first of an array
+               -pop() : to remove last element from an array 
+               -shift() : to remove first element from an array 
+               -sort(compare fn):to sort an array
+                       compare fn: (num1,num2)=>num1-num2  :ascenting
+                                   (num1,num2)=>num2-numa  :decenting
+
+               -forEach(Callbackfn :(value,index,array)=>void)     
+               :alternative of for-of loop 
+                 -filter(Callbackfn:(value,index,array)=>[]) : return an array with elements satisfying the condition from an existing array 
+              -find(Callback):return an item satisfying the condition from an existing array.          
+             --map(callback)  : return a new array with values after applying a mapping function to existing array 
+    -reduce(callback,initialvalue) : 
+        callback:(required) : a function executed on each element
+            callback(accumulator,currentvalue,currentindex,Array)
+           - reduceright : last to first execution 
+            -reduce : first to last execution 
+    -some(callback) :
+            check if atleast one element  in the array satisfies  a condition .return true if any element matches ,otherwise false
+     -flat (depth):
+            return an array with corresponding depth as diamension
+     -includes(item):
+            return boolean based on the item present the array
+            
+     - indexOf(item) :
+            return index value corresponding to the item
+     - splice(startingindex,delete count) :
+            to remove array element
+      - join(separator):
+            used to join all elements of an array into single string   
+
+
+            String
+          -------------------
+
+      -Content that put in '' or ""
+
+      -String Methods    
+           -substring(startingIndex,endingIndex ):
+                retrun a part of string
+           -startsWith("str")     
+           -endsWith("str")
+           -toUpperCase()
+           -toLowerCase()
+           -trim() :
+                remove whitespaces from both end of a string
+           -split(separator) :
+                used to split a string into an aray of substring ,based on a specified seperator  
+                 -" " : seperate when come a spaces
+                 -""  : seperate each element or letter from the string   
+           -slice(startingIndex,EndingIndex):
+                  to get substring from a string  
+
+       -Object :
+                used to store multiple data in a single variable.data stored as key : value pair
+                ex : object_name=(key : value,keyvalue)
+              key : to access data from an object
+              syntax : object_name["key"] / object_name.key 
+             -used to check a key present ia an object or not use,'in' operator
+              syntax : key in object_name,return boolean value 
+            -hasOwnProperty(key) 
+            -object.values(object_name):
+                      return an array , which contains value in an object
+            -object.keys(object_name):
+                     return an array , which contains keys in an object
+          -Object.assign (object_name,{key:value}) :
+                     to insert data to an object            
+
+        
+          OOPS
+     ---------------
+
+OOPS stands for Object Oriented Programming ,it is a Programming style where codes you organize code into object.
+object- that holds :
+        - Data: called properties (ex: name,age,price..)
+        - Behaviors: called methods (functions that work on data)
+-Core concepts:
+    -class: 
+      a blue print / templatefor creating object
+                  -class classname{
+                    properties
+                    methods
+                  }
+
+    -object:
+        a real world enity created from the class
+              -const object_name=new classname()
+
+    -constructor:
+           a method used to initialie class property at 
+           the time of object creation
+    -reference :
+           'this' keyword: used to refer properties to its class
+
+-OOP Features
+        -inheritence:
+              one class can inherit properties and methods from another class using 'extends'keyword.inheritence promote reusability.
+                 -inheritence between class is known as "classical inheritence"
+                 - inheritence between object is known as "prototype inheritence"  
+
+         -Polymorphism:
+                same function name , different behaviours,to implement Polymorphism  in js usereset(...)    
+                operator: collect value in to an array
+
+         -Abstraction : 
+               showing only the essential details and hiding the complex implementation
+
+          -Encapsulation :
+                wrapping data(variable)and methods in to a single units(a class)      
+    
+         
+         -JS -front-end concept
+      --------------------------------
+
+          -used to make webpage dynamic
+          -way to apply js in html
+               -Internal JS :   use script tag to provide js code in html
+               -External JS:  link external js file with html using script tag.
+
+          DOM(Document Object Model)     
+              -it is a document object model for a webpage.a tree like structure corresponding to a webpage ,there will be a single root node (html tag) which is made up of object
+
+             -js can access webpage /html element via DOM using 'document' object
+
+          -selecting html elements in to js code
+               -using tagname:document.getElementByTagname('tagname')
+
+               -using Id : document.getElementById(`id`)
+
+               -using class name : document.getElementByClassname
+               -document.querySelector (`tagname`/`classname`)
+                   - query Selector retrun only single element.
+                   -to return all element which have same 
+                   classname/tagname use document.querySelectorAll() 
+
+          -Events : 
+              an event is an action that happens in browser , which javascript can respond to.
+
+              Type of Events :
+                -Mouse Events:
+                      - click : when an element is clicked 
+                       -mouseover: when mous leaves an element
+                -keyboard Events
+                       -keydown :when key is pressed
+                       -keyup :  when key is released
+               -from Events :
+                      -submit: when a form submitted 
+                      -change: when a value of input change
+
+               -to access/update content of an html element
+                    -innerHTML
+                    innerText      
+
+
+    -API (Application Programming Interface)
+ ------------------------------------------------
+
+    -used to communicate Application available on internet, 
+    -REST API      PROTOCOL= HTTP & DATA= JSON
+    -SOAP API      PROTOCOL= HTTP & DATA= XML
+
+-JSON (Javascript Object Notation) : {"key":value}
+-HTTP Request
+    -GET : to get data from server to client
+    -POST : to store/add data to server
+    -PUT : to edit/update existing data
+    -DELETE : to remove a data from the server
+
+-HTTP RESPONSE CODE :
+      -1xx : Informational
+      -2xx : Success RESPONSE
+      -3xx : Redirection
+      -4xx : Client side error
+            404 : not found
+      -5xx : Server side error       
+
+
+JS has mainly 2 type of Function
+      1. Synchronous function
+          -eg : concole.log()
+      2. Asynchronous function
+           -eg : setTimeOut()   
+
+ - if we use callback  to resolve Asynchronous functions it may lead callback hell: 'Nesting of callback function scenario'. to avoid this js indroduce Promise
+ -Promise : it is an object that act as placeholder for the result of an asynchronous operation . it doesn't give the result immdediately.instead ,it gurantees("Promises")that you will get the result later-either a value (succes) or an error(failure)
+
+ -State of promise 
+      - pending-initial state, operation not finished.
+      - fullfilled-operation complete successfully (resolve)
+      - rejected-operation failed (rejected)
+
+
+
+ -The ways we can do api in js
+      -using XmlHttpRequest   
+      -using fetch()         
+              
+                
+
+
+
+          
+                  
+
+
+            
+
+
+
