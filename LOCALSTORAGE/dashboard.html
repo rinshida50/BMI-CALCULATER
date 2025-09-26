@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e4e3e4;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+    .logout-btn {
+      background-color: rgb(98, 133, 228);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+    .form-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px; /* spacing for stacked layout */
+    }
+    .btn-submit {
+      background-color: #490606;
+      color: white;
+      width: 100%;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header bg-dark text-light">
+    <h3>Welcome user</h3>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="container my-4">
+    <div class="row g-4 align-items-start justify-content-center">
+
+      <!-- Left Illustration -->
+      <div class="col-12 col-md-6 text-center">
+        <img src="https://img.freepik.com/free-vector/hand-drawn-gathering-data-business-concept_23-2149164274.jpg?semt=ais_hybrid&w=740&q=80" 
+             alt="Employee Illustration" class="img-fluid rounded shadow">
+      </div>
+
+      <!-- Add Employee Form -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-box">
+          <h2 class="section-title text-danger">Add Employee Details</h2>
+          <form id="employeeForm">
+            <input type="text" class="form-control mb-2" id="empId" placeholder="Employee Id" required>
+            <input type="text" class="form-control mb-2" id="empName" placeholder="Employee Name" required>
+            <input type="text" class="form-control mb-2" id="empAddress" placeholder="Employee Address" required>
+            <input type="text" class="form-control mb-2" id="empDesignation" placeholder="Employee Designation" required>
+            <input type="text" class="form-control mb-2" id="empExperience" placeholder="Employee Experience" required>
+            <input type="number" class="form-control mb-3" id="empSalary" placeholder="Employee Salary" required>
+            <button type="submit" class="btn btn-submit">Add Employee</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Search Box -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-box">
+          <h4 class="mb-3 text-center text-primary">Search Employee</h4>
+          <input type="text" class="form-control mb-2" id="searchId" placeholder="Search Id">
+          <button class="btn btn-submit" onclick="searchEmployee()">Search</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Handle Employee Form Submission
+    document.getElementById("employeeForm").addEventListener("submit", function(event){
+      event.preventDefault();
+
+      const emp = {
+        id: document.getElementById("empId").value,
+        name: document.getElementById("empName").value,
+        address: document.getElementById("empAddress").value,
+        designation: document.getElementById("empDesignation").value,
+        experience: document.getElementById("empExperience").value,
+        salary: document.getElementById("empSalary").value
+      };
+
+      // Save employee to localStorage
+      let employees = JSON.parse(localStorage.getItem("employees")) || [];
+      employees.push(emp);
+      localStorage.setItem("employees", JSON.stringify(employees));
+
+      alert("Employee added successfully!");
+      document.getElementById("employeeForm").reset();
+    });
+
+    // Search employee by ID
+    function searchEmployee() {
+      const searchId = document.getElementById("searchId").value;
+      let employees = JSON.parse(localStorage.getItem("employees")) || [];
+      const emp = employees.find(e => e.id === searchId);
+
+      if(emp) {
+        alert(`Employee Found!\nName: ${emp.name}\nDesignation: ${emp.designation}\nSalary: ${emp.salary}`);
+      } else {
+        alert("Employee not found!");
+      }
+    }
+
+    // Logout Function
+    function logout() {
+      alert("You have been logged out!");
+      window.location.href = "login.html"; // redirect back to login
+    }
+  </script>
+
+</body>
+</html>

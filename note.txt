@@ -403,6 +403,16 @@ JS has mainly 2 type of Function
  -The ways we can do api in js
       -using XmlHttpRequest   
       -using fetch()         
+
+
+
+
+
+
+
+
+
+      
               
                 
 

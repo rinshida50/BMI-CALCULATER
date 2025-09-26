@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+<body>
+    <h1>LocalStorage</h1>
+    
+    <script>
+        //key value
+        let company = " Luminar Technolab"
+        localStorage.setItem("COMPANY" , company)
+        let cname =localStorage.getItem("COMPANY")
+        console.log(cname);
+        localStorage.removeItem("COMPANY")
+        localStorage.clear()
+
+
+        //Object 
+        const companyDetails ={
+            id:557659866,
+            name : "Luminar Technolab",
+            branches:4,
+        }
+        //JS OBJECT =>JSON string 
+        sessionStorage.setItem("CompanyData", JSON.stringify(companyDetails))
+        let cdata = JSON.parse(sessionStorage.getItem("CompanyData"))
+        console.log(cdata); // JSON
+
+        //JSON String => JS OBJECT
+        sessionStorage.removeItem("companyData")
+        sessionStorage.clear()
+        
+
+        
+
+    </script>
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./key.js"></script>
+</head>
+
+</head>
+
+<body class="bg-dark vh-100 d-flex flex-column align-items-center justify-content-start">
+
+    <!-- Header -->
+    <header class="text-center py-3 bg-secondary text-light w-100">
+        <h1>Virtual Keyboard</h1>
+    </header>
+
+    <!-- Keyboard Container -->
+    <div class="container mt-3 p-3" style="background-color: rgb(110, 110, 109);">
+
+        <!-- Output Textarea -->
+        <textarea id="output" class="form-control mb-3" rows="5" placeholder="0" readonly></textarea>
+
+        <!-- Number Row -->
+        <div class="row g-2 mb-1">
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('1')">1</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('2')">2</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('3')">3</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('4')">4</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('5')">5</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('6')">6</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('7')">7</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('8')">8</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('9')">9</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('0')">0</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('-')">-</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('+')">+</button></div>
+        </div>
+
+        <!-- QWERTY Row -->
+        <div class="row g-2 mb-1">
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('Q')">Q</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('W')">W</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('E')">E</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('R')">R</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('T')">T</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('Y')">Y</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('U')">U</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('I')">I</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('O')">O</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('P')">P</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('[')">[</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData(']')">]</button></div>
+        </div>
+
+        <!-- Middle Row -->
+        <div class="row g-2 mb-1">
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('A')">A</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('S')">S</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('D')">D</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('F')">F</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('G')">G</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('H')">H</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('J')">J</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('K')">K</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('L')">L</button></div>
+            <div class="col-3 col-sm-2"><button class="btn btn-light w-100" onclick="addText('ENTER')">ENTER</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData(';')">;</button></div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="row g-2 mb-1">
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('Z')">Z</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('X')">X</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('C')">C</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('V')">V</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('B')">B</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('N')">N</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('M')">M</button></div>
+            <div class="col-3 col-sm-2"><button class="btn btn-light w-100" onclick="showSpace()">SPACE</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="removeItem()">BKSP</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="displayData('.')">.</button></div>
+            <div class="col-2 col-sm-1"><button class="btn btn-light w-100" onclick="showResult('=')">=</button></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
