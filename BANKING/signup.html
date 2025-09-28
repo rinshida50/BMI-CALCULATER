@@ -4,67 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register - My Bank</title>
+
   <style>
+    /* ✅ General Styling */
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #7183b5, #000e2d);
       height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 15px;
     }
+
+    /* ✅ Form Box */
     .register-box {
       background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 30px 25px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
       text-align: center;
+      transition: all 0.3s ease;
     }
+
     .register-box img {
-      width: 50px;
+      width: 60px;
       margin-bottom: 10px;
     }
+
     .register-box h2 {
       margin: 0;
       color: #2563eb;
+      font-size: 22px;
     }
+
     .register-box p {
-      margin: 5px 0 15px;
+      margin: 8px 0 20px;
       color: #444;
+      font-size: 14px;
     }
+
+    /* ✅ Input Fields */
     input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: 0.3s;
     }
+
+    input:focus {
+      border-color: #2563eb;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37,99,235,0.3);
+    }
+
+    /* ✅ Button */
     button {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
+      padding: 12px;
+      margin-top: 12px;
       background: #2563eb;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
+
     button:hover {
       background: #1e40af;
     }
+
+    /* ✅ Sign-in Link */
     .signin-link {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 14px;
+      color: #333;
     }
+
     .signin-link a {
       color: #2563eb;
       text-decoration: none;
       font-weight: bold;
     }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* ✅ Responsive Design */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .register-box {
+        padding: 25px 20px;
+        max-width: 320px;
+      }
+
+      .register-box h2 {
+        font-size: 20px;
+      }
+
+      input, button {
+        font-size: 13.5px;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .register-box {
+        padding: 20px 15px;
+      }
+
+      .register-box img {
+        width: 50px;
+      }
+
+      .register-box h2 {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="register-box">
     <img src="https://cdn-icons-png.flaticon.com/512/3448/3448609.png" alt="Bank Logo">
@@ -78,26 +151,28 @@
     <button onclick="register()">Register</button>
 
     <div class="signin-link">
-      Already have an account? <a href="#">Sign in</a>
+      Already have an account? <a href="./login.html">Sign in</a>
     </div>
   </div>
 
   <script>
-  function register() {
-    const username = document.querySelector('input[placeholder="Username"]').value;
+    function register() {
+      const username = document.getElementById("username").value.trim();
+      const account = document.getElementById("account").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-    if (username.trim() === "") {
-      alert("Please enter a username!");
-      return;
+      // ✅ Validation
+      if (!username || !account || !password) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      // Save username locally
+      localStorage.setItem("bankUsername", username);
+
+      alert("Registration successful!");
+      window.location.href = './dashboard.html';
     }
-
-    localStorage.setItem("bankUsername", username);
-
-    alert("Registration successful!");
-    window.location.href = './dashboard.html';
-  }
-
-      
   </script>
 </body>
 </html>

@@ -10,33 +10,60 @@
       font-family: Arial, sans-serif;
       background: url('https://img.freepik.com/premium-vector/bank-building-bank-financing-money-exchange-financial-services-atm-vector-illustration_36358-2265.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
       min-height: 100vh;
+      background-attachment: fixed;
     }
 
     /* Navbar */
     nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background: #2563eb;
       color: white;
-      padding:  10px;
-      font-size: 2px;
-      justify-content: space-between;
-      align-items: center
+      padding: 15px 20px;
+      flex-wrap: wrap;
     }
-    nav h2 { margin: 0; }
-    nav .menu a {
+
+    nav h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .menu a {
       color: white;
-      margin-left: 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
     }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    /* Welcome Section */
     .welcome {
       text-align: center;
       margin: 20px;
-      font-size: 24px;
-      font-weight:bold;
+      font-size: 22px;
+      font-weight: bold;
       color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
 
-    /* Content */
+    .welcome small {
+      display: block;
+      font-weight: normal;
+      font-size: 16px;
+      color: #f0f0f0;
+    }
+
+    /* Container Layout */
     .container {
       display: flex;
       justify-content: center;
@@ -44,25 +71,37 @@
       margin: 40px auto;
       flex-wrap: wrap;
       max-width: 900px;
+      padding: 0 15px;
     }
+
     .card {
       background: #fff;
       padding: 20px;
       border-radius: 10px;
       width: 300px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
     }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
     .card h3 {
       margin-top: 0;
       color: #2563eb;
+      text-align: center;
     }
+
     input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 14px;
     }
+
     button {
       background: #2563eb;
       color: white;
@@ -70,27 +109,37 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 15px;
+      width: 100%;
     }
-    button:hover { background: #1e40af; }
+
+    button:hover {
+      background: #1e40af;
+    }
+
     .balance {
       margin-top: 10px;
       font-weight: bold;
       color: #111;
+      text-align: center;
     }
 
-    /* Transaction Table */
+    /* Transaction History */
     .history {
       max-width: 900px;
-      margin: auto;
-      margin-bottom: 40px;
+      margin: 30px auto 50px;
+      padding: 0 15px;
     }
+
     .history h3 {
       background: #2563eb;
       color: white;
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px 8px 0 0;
       margin: 0;
+      text-align: center;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -98,27 +147,51 @@
       border-radius: 0 0 8px 8px;
       overflow: hidden;
     }
+
     table th, table td {
       border: 1px solid #ccc;
       padding: 10px;
       text-align: center;
+      font-size: 14px;
     }
+
     table th {
       background: #f3f4f6;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .menu {
+        justify-content: center;
+      }
+      .card {
+        width: 100%;
+        max-width: 350px;
+      }
+      .welcome {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav h2 {
+        font-size: 20px;
+      }
+      .welcome {
+        font-size: 18px;
+      }
+      table th, table td {
+        font-size: 12px;
+        padding: 8px;
+      }
     }
   </style>
 </head>
 <body>
-
-    <div class="navbar">BankApp</div>
-
-  <div class="welcome">
-    Welcome <span id="userName"></span><br>
-    <small>Online Banking Services</small>
-  </div>
-
-  <!-- Your Deposit, Withdraw, and Transaction History code goes here -->
-
 
   <!-- Navbar -->
   <nav>
@@ -130,6 +203,12 @@
       <a href="#">About</a>
     </div>
   </nav>
+
+  <!-- Welcome Section -->
+  <div class="welcome">
+    Welcome <span id="userName"></span>
+    <small>Online Banking Services</small>
+  </div>
 
   <!-- Deposit & Withdraw -->
   <div class="container">
@@ -161,20 +240,15 @@
           <th>Balance</th>
         </tr>
       </thead>
-      <tbody id="historyTable">
-      </tbody>
+      <tbody id="historyTable"></tbody>
     </table>
   </div>
 
+  <!-- JavaScript -->
   <script>
-
-     // Get username from localStorage
+    // Get username from localStorage
     const username = localStorage.getItem("bankUsername");
-    if (username) {
-      document.getElementById("userName").textContent = username;
-    } else {
-      document.getElementById("userName").textContent = "User";
-    }
+    document.getElementById("userName").textContent = username ? username : "User";
 
     let balance = 0;
     const balanceEl = document.getElementById("balance");
@@ -202,15 +276,9 @@
         addTransaction("Deposit", amount, balance);
         document.getElementById("depositAmount").value = "";
       } else {
-        alert("Enter valid amount");
+        alert("Enter a valid amount!");
       }
     }
-
-    function register() {
-  alert("Registration successful!");
-  window.location.href = './signup.html';
-}
-
 
     function withdraw() {
       let amount = parseInt(document.getElementById("withdrawAmount").value);
@@ -220,7 +288,7 @@
         addTransaction("Withdraw", amount, balance);
         document.getElementById("withdrawAmount").value = "";
       } else {
-        alert("Invalid withdraw amount");
+        alert("Invalid withdrawal amount!");
       }
     }
   </script>

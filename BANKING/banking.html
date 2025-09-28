@@ -1,387 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bank</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Bank</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-  />
+    <style>
+      body {
+        background: #8bb6e5;
+      }
 
-  <style>
-    body {
-      background: #8bb6e5; /* Light blue background */
-    }
+      .hero {
+        padding: 60px 0;
+      }
 
-    .hero {
-      padding: 60px 0;
-    }
+      .illustration {
+        max-width: 100%;
+        border-radius: 15px;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.6s ease-in-out;
+      }
 
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+      .illustration:hover {
+        transform: scale(1.05);
+      }
 
-    .illustration {
-      max-width: 100%;
-      border-radius: 15px;
-      background: white;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.6s ease-in-out;
-    }
+      .navbar {
+        background: #f5f9ff;
+      }
 
-    .illustration:hover {
-      transform: scale(1.05);
-    }
+      .btn-custom {
+        background: #0d6efd;
+        color: white;
+        font-weight: bold;
+      }
 
-    .navbar {
-      background: #f5f9ff;
-    }
+      .chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0d6efd;
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
 
-    .btn-custom {
-      background: #0d6efd;
-      color: white;
-      font-weight: bold;
-    }
+      h2 {
+        margin: 30px 0;
+        color: #1e3a8a;
+      }
 
-    .chat-icon {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0d6efd;
-      color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-    }
+      .plans {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+        flex-wrap: wrap;
+      }
 
-    header {
-      background: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      .plan {
+        background: #fff;
+        padding: 20px;
+        width: 250px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+      }
 
-    header h1 {
-      font-size: 20px;
-      color: #2563eb;
-      margin: 0;
-    }
+      .plan:hover {
+        transform: translateY(-5px);
+      }
 
-    .auth-links a {
-      margin-left: 15px;
-      text-decoration: none;
-      color: #2563eb;
-      font-weight: bold;
-    }
+      .plan h3 {
+        margin-bottom: 10px;
+        color: #2563eb;
+      }
 
-    h2 {
-      margin: 30px 0;
-      color: #1e3a8a;
-    }
+      .price {
+        font-size: 24px;
+        margin: 10px 0;
+        font-weight: bold;
+        color: #111;
+      }
 
-    .plans {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px;
-      flex-wrap: wrap;
-    }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 20px 0;
+      }
 
-    .plan {
-      background: #fff;
-      padding: 20px;
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
+      ul li {
+        margin: 8px 0;
+        color: #333;
+      }
 
-    .plan:hover {
-      transform: translateY(-5px);
-    }
+      button {
+        background: #2563eb;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
 
-    .plan h3 {
-      margin-bottom: 10px;
-      color: #2563eb;
-    }
+      button:hover {
+        background: #1e40af;
+      }
 
-    .price {
-      font-size: 24px;
-      margin: 10px 0;
-      font-weight: bold;
-      color: #111;
-    }
+      #head4 {
+        text-align: center;
+      }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0 20px 0;
-    }
+      /* ✅ Mobile adjustments */
+      @media (max-width: 768px) {
+        .hero {
+          text-align: center;
+        }
 
-    ul li {
-      margin: 8px 0;
-      color: #333;
-    }
+        .hero-text {
+          margin-bottom: 30px;
+        }
 
-    button {
-      background: #2563eb;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-    }
+        .navbar-brand {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
 
-    button:hover {
-      background: #1e40af;
-    }
+  <body>
+    <!-- ✅ Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="bi bi-bank"></i> My Bank
+        </a>
 
-    #head4 {
-      text-align: center;
-      justify-content: center;
-    }
-  </style>
-</head>
+        <!-- ✅ Mobile Menu Toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-bank"></i> My Bank
-      </a>
-      <div class="d-flex">
-        <!-- ✅ Register and Login buttons -->
-        <a href="#" class="btn btn-link" onclick="register()">Register</a>
-        <a href="#" class="btn btn-link" onclick="login()">Login</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="container hero">
-    <div class="row align-items-center">
-      <!-- Left Text -->
-      <div class="col-md-6 hero-text">
-        <h1 class="fw-bold text-primary">Banking Made Simple</h1>
-        <p>
-          Experience next-level online banking with secure transactions,
-          instant payments, and easy access anywhere in the world.
-        </p>
-        <a href="#" class="btn btn-custom mt-3">Open an Account</a>
-      </div>
-
-      <!-- Right Image -->
-      <div class="col-md-6 text-center">
-        <img
-          src="https://i.pinimg.com/originals/63/a3/9c/63a39c675308ab8288b61b82d6ca736f.png"
-          alt="Banking Illustration"
-          class="illustration"
-        />
-      </div>
-    </div>
-  </div>
-
-  <!-- Chat Icon -->
-  <div class="chat-icon">💬</div>
-
-  <!-- Services Section -->
-  <section class="py-5 bg-white">
-    <div class="container">
-      <h2 class="text-center text-primary fw-bold mb-5">Our Banking Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card text-center shadow-sm border-0 h-100 p-4">
-            <div class="mb-3 text-primary fs-1">
-              <i class="bi bi-phone"></i>
-            </div>
-            <h5 class="fw-bold">Mobile Banking</h5>
-            <p class="text-muted">
-              Access your account, transfer funds, and pay bills with our
-              secure mobile app.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card text-center shadow-sm border-0 h-100 p-4">
-            <div class="mb-3 text-primary fs-1">
-              <i class="bi bi-shield-lock"></i>
-            </div>
-            <h5 class="fw-bold">Secure Transactions</h5>
-            <p class="text-muted">
-              Enjoy peace of mind with advanced encryption and fraud detection.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card text-center shadow-sm border-0 h-100 p-4">
-            <div class="mb-3 text-primary fs-1">
-              <i class="bi bi-credit-card-2-front"></i>
-            </div>
-            <h5 class="fw-bold">Flexible Payments</h5>
-            <p class="text-muted">
-              Choose from multiple payment options tailored to your needs.
-            </p>
-          </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <a href="#" class="btn btn-link" onclick="register()">Register</a>
+          <a href="#" class="btn btn-link" onclick="login()">Login</a>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Why Choose Us -->
-  <section class="py-5" style="background-color: #f8f9fa;">
-    <div class="container">
+    <!-- ✅ Hero Section -->
+    <div class="container hero">
       <div class="row align-items-center">
-        <!-- Left Image -->
-        <div class="col-md-6 text-center mb-4 mb-md-0">
+        <!-- Left Text -->
+        <div class="col-12 col-md-6 hero-text">
+          <h1 class="fw-bold text-primary">Banking Made Simple</h1>
+          <p>
+            Experience next-level online banking with secure transactions,
+            instant payments, and easy access anywhere in the world.
+          </p>
+          <a href="#" class="btn btn-custom mt-3">Open an Account</a>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-12 col-md-6 text-center">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
-            alt="Why Choose Us"
-            class="img-fluid rounded shadow"
+            src="https://i.pinimg.com/originals/63/a3/9c/63a39c675308ab8288b61b82d6ca736f.png"
+            alt="Banking Illustration"
+            class="illustration img-fluid"
           />
         </div>
-
-        <!-- Right Content -->
-        <div class="col-md-6">
-          <h2 class="text-primary fw-bold mb-4">Why Choose My Bank?</h2>
-          <ul class="list-unstyled">
-            <li class="mb-3">
-              <i class="bi bi-check-circle-fill text-primary me-2"></i> 24/7
-              Customer Support
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check-circle-fill text-primary me-2"></i> Instant
-              Money Transfers
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check-circle-fill text-primary me-2"></i> Low
-              Transaction Fees
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check-circle-fill text-primary me-2"></i> Trusted
-              by Millions Worldwide
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Testimonials Section -->
-  <section class="py-5" style="background: #ffffff;">
-    <div class="container text-center">
-      <h2 class="mb-5 text-primary fw-bold">What Our Customers Say</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm border-0 h-100 p-4">
-            <p class="mb-3">
-              "Best online banking experience ever! The app is super easy to
-              use."
-            </p>
-            <h6 class="fw-bold text-muted">- John Doe</h6>
+    <!-- ✅ Chat Icon -->
+    <div class="chat-icon">💬</div>
+
+    <!-- ✅ Services Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="text-center text-primary fw-bold mb-5">Our Banking Services</h2>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <div class="card text-center shadow-sm border-0 h-100 p-4">
+              <div class="mb-3 text-primary fs-1">
+                <i class="bi bi-phone"></i>
+              </div>
+              <h5 class="fw-bold">Mobile Banking</h5>
+              <p class="text-muted">
+                Access your account, transfer funds, and pay bills with our secure mobile app.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card shadow-sm border-0 h-100 p-4">
-            <p class="mb-3">
-              "Secure, fast, and reliable. I recommend My Bank to everyone."
-            </p>
-            <h6 class="fw-bold text-muted">- Sarah Williams</h6>
+          <div class="col-12 col-md-4">
+            <div class="card text-center shadow-sm border-0 h-100 p-4">
+              <div class="mb-3 text-primary fs-1">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <h5 class="fw-bold">Secure Transactions</h5>
+              <p class="text-muted">
+                Enjoy peace of mind with advanced encryption and fraud detection.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card shadow-sm border-0 h-100 p-4">
-            <p class="mb-3">
-              "Customer support is excellent. They resolved my issue in
-              minutes."
-            </p>
-            <h6 class="fw-bold text-muted">- Michael Smith</h6>
+          <div class="col-12 col-md-4">
+            <div class="card text-center shadow-sm border-0 h-100 p-4">
+              <div class="mb-3 text-primary fs-1">
+                <i class="bi bi-credit-card-2-front"></i>
+              </div>
+              <h5 class="fw-bold">Flexible Payments</h5>
+              <p class="text-muted">
+                Choose from multiple payment options tailored to your needs.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ✅ Why Choose Us -->
+    <section class="py-5" style="background-color: #f8f9fa;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-6 text-center mb-4 mb-md-0">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
+              alt="Why Choose Us"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <h2 class="text-primary fw-bold mb-4">Why Choose My Bank?</h2>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i> 24/7 Customer Support
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i> Instant Money Transfers
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i> Low Transaction Fees
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i> Trusted by Millions Worldwide
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Testimonials -->
+    <section class="py-5" style="background: #ffffff;">
+      <div class="container text-center">
+        <h2 class="mb-5 text-primary fw-bold">What Our Customers Say</h2>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <div class="card shadow-sm border-0 h-100 p-4">
+              <p class="mb-3">
+                "Best online banking experience ever! The app is super easy to use."
+              </p>
+              <h6 class="fw-bold text-muted">- John Doe</h6>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card shadow-sm border-0 h-100 p-4">
+              <p class="mb-3">
+                "Secure, fast, and reliable. I recommend My Bank to everyone."
+              </p>
+              <h6 class="fw-bold text-muted">- Sarah Williams</h6>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card shadow-sm border-0 h-100 p-4">
+              <p class="mb-3">
+                "Customer support is excellent. They resolved my issue in minutes."
+              </p>
+              <h6 class="fw-bold text-muted">- Michael Smith</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Plans -->
+    <h2 id="head4" class="text-center">Choose Your Plan</h2>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Basic</h3>
+        <div class="price">$0 <span style="font-size:14px;">/mo</span></div>
+        <ul>
+          <li>✔ Free Account</li>
+          <li>✔ Mobile App</li>
+          <li>✔ Secure Payments</li>
+        </ul>
+        <button onclick="selectPlan('Basic')">Get Started</button>
+      </div>
+
+      <div class="plan">
+        <h3>Premium</h3>
+        <div class="price">$15 <span style="font-size:14px;">/mo</span></div>
+        <ul>
+          <li>✔ All Basic Features</li>
+          <li>✔ Priority Support</li>
+          <li>✔ Lower Fees</li>
+        </ul>
+        <button onclick="selectPlan('Premium')">Get Started</button>
+      </div>
+
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <div class="price">$50 <span style="font-size:14px;">/mo</span></div>
+        <ul>
+          <li>✔ Unlimited Accounts</li>
+          <li>✔ Dedicated Manager</li>
+          <li>✔ Custom Features</li>
+        </ul>
+        <button onclick="selectPlan('Enterprise')">Get Started</button>
+      </div>
     </div>
-  </section>
 
-  <!-- Plans -->
-  <h2 id="head4" class="text-center">Choose Your Plan</h2>
+    <!-- ✅ JS -->
+    <script>
+      function selectPlan(plan) {
+        alert("You have selected the " + plan + " Plan!");
+      }
 
-  <div class="plans">
-    <div class="plan">
-      <h3>Basic</h3>
-      <div class="price">$0 <span style="font-size:14px;">/mo</span></div>
-      <ul>
-        <li>✔ Free Account</li>
-        <li>✔ Mobile App</li>
-        <li>✔ Secure Payments</li>
-      </ul>
-      <button onclick="selectPlan('Basic')">Get Started</button>
-    </div>
+      function register() {
+        alert("Redirecting to Register Page...");
+        window.location.href = "./signup.html";
+      }
 
-    <div class="plan">
-      <h3>Premium</h3>
-      <div class="price">$15 <span style="font-size:14px;">/mo</span></div>
-      <ul>
-        <li>✔ All Basic Features</li>
-        <li>✔ Priority Support</li>
-        <li>✔ Lower Fees</li>
-      </ul>
-      <button onclick="selectPlan('Premium')">Get Started</button>
-    </div>
+      function login() {
+        alert("Redirecting to Login Page...");
+        window.location.href = "./login.html";
+      }
+    </script>
 
-    <div class="plan">
-      <h3>Enterprise</h3>
-      <div class="price">$50 <span style="font-size:14px;">/mo</span></div>
-      <ul>
-        <li>✔ Unlimited Accounts</li>
-        <li>✔ Dedicated Manager</li>
-        <li>✔ Custom Features</li>
-      </ul>
-      <button onclick="selectPlan('Enterprise')">Get Started</button>
-    </div>
-  </div>
-
-  <!-- JS -->
-  <script>
-    function selectPlan(plan) {
-      alert("You have selected the " + plan + " Plan!");
-    }
-
-    function register() {
-      alert("Registration successful!");
-      // Make sure signup.html exists in same folder
-      window.location.href = "./signup.html";
-    }
-
-    function login() {
-      alert("Redirecting to Login Page...");
-      window.location.href = "./login.html";
-    }
-  </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
