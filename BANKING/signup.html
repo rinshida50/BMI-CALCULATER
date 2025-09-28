@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - My Bank</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #7183b5, #000e2d);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .register-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .register-box img {
+      width: 50px;
+      margin-bottom: 10px;
+    }
+    .register-box h2 {
+      margin: 0;
+      color: #2563eb;
+    }
+    .register-box p {
+      margin: 5px 0 15px;
+      color: #444;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+    .signin-link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .signin-link a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/3448/3448609.png" alt="Bank Logo">
+    <h2>My Bank</h2>
+    <p>Create your account to get started</p>
+
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="text" id="account" placeholder="Account Number" required>
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button onclick="register()">Register</button>
+
+    <div class="signin-link">
+      Already have an account? <a href="#">Sign in</a>
+    </div>
+  </div>
+
+  <script>
+  function register() {
+    const username = document.querySelector('input[placeholder="Username"]').value;
+
+    if (username.trim() === "") {
+      alert("Please enter a username!");
+      return;
+    }
+
+    localStorage.setItem("bankUsername", username);
+
+    alert("Registration successful!");
+    window.location.href = './dashboard.html';
+  }
+
+      
+  </script>
+</body>
+</html>

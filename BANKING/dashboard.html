@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BankApp - Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://img.freepik.com/premium-vector/bank-building-bank-financing-money-exchange-financial-services-atm-vector-illustration_36358-2265.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      background: #2563eb;
+      color: white;
+      padding:  10px;
+      font-size: 2px;
+      justify-content: space-between;
+      align-items: center
+    }
+    nav h2 { margin: 0; }
+    nav .menu a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .welcome {
+      text-align: center;
+      margin: 20px;
+      font-size: 24px;
+      font-weight:bold;
+      color: white;
+    }
+
+    /* Content */
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+      max-width: 900px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #2563eb;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #1e40af; }
+    .balance {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    /* Transaction Table */
+    .history {
+      max-width: 900px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+    .history h3 {
+      background: #2563eb;
+      color: white;
+      padding: 10px;
+      border-radius: 8px 8px 0 0;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    table th {
+      background: #f3f4f6;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="navbar">BankApp</div>
+
+  <div class="welcome">
+    Welcome <span id="userName"></span><br>
+    <small>Online Banking Services</small>
+  </div>
+
+  <!-- Your Deposit, Withdraw, and Transaction History code goes here -->
+
+
+  <!-- Navbar -->
+  <nav>
+    <h2>BankApp</h2>
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+  <!-- Deposit & Withdraw -->
+  <div class="container">
+    <div class="card">
+      <h3>Deposit</h3>
+      <input type="number" id="depositAmount" placeholder="Enter Amount">
+      <input type="password" placeholder="Enter Password">
+      <button onclick="deposit()">Deposit</button>
+      <div class="balance">Balance: ₹<span id="balance">0</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Withdraw</h3>
+      <input type="number" id="withdrawAmount" placeholder="Enter Amount">
+      <input type="password" placeholder="Enter Password">
+      <button onclick="withdraw()">Withdraw</button>
+    </div>
+  </div>
+
+  <!-- Transaction History -->
+  <div class="history">
+    <h3>Transaction History</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody id="historyTable">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+
+     // Get username from localStorage
+    const username = localStorage.getItem("bankUsername");
+    if (username) {
+      document.getElementById("userName").textContent = username;
+    } else {
+      document.getElementById("userName").textContent = "User";
+    }
+
+    let balance = 0;
+    const balanceEl = document.getElementById("balance");
+    const historyTable = document.getElementById("historyTable");
+
+    function formatDate() {
+      return new Date().toLocaleString();
+    }
+
+    function addTransaction(type, amount, balance) {
+      let row = `<tr>
+        <td>${formatDate()}</td>
+        <td>${type}</td>
+        <td>₹${amount}</td>
+        <td>₹${balance}</td>
+      </tr>`;
+      historyTable.innerHTML = row + historyTable.innerHTML;
+    }
+
+    function deposit() {
+      let amount = parseInt(document.getElementById("depositAmount").value);
+      if (amount > 0) {
+        balance += amount;
+        balanceEl.textContent = balance;
+        addTransaction("Deposit", amount, balance);
+        document.getElementById("depositAmount").value = "";
+      } else {
+        alert("Enter valid amount");
+      }
+    }
+
+    function register() {
+  alert("Registration successful!");
+  window.location.href = './signup.html';
+}
+
+
+    function withdraw() {
+      let amount = parseInt(document.getElementById("withdrawAmount").value);
+      if (amount > 0 && amount <= balance) {
+        balance -= amount;
+        balanceEl.textContent = balance;
+        addTransaction("Withdraw", amount, balance);
+        document.getElementById("withdrawAmount").value = "";
+      } else {
+        alert("Invalid withdraw amount");
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car World</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #152d8d;
+    }
+    .clear-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      background-color: #212529;
+      color: white;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .clear-btn:hover {
+      background-color: #343a40;
+    }
+    h5{
+        font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+    <h2>Car World</h2>
+   <div class="row g-4 justify-content-center">
+
+  <!-- Store Records -->
+  <div class="col-md-4 d-flex">
+    <div class="card p-4 flex-fill">
+      <h5 class="text-center text-primary">Enter Details</h5>
+      <div class="mb-3">
+        <label>Car Brand</label>
+        <input type="text" id="carBrand" class="form-control" placeholder="Car Brand">
+      </div>
+      <div class="mb-3">
+        <label>Price</label>
+        <input type="text" id="carPrice" class="form-control" placeholder="Price">
+      </div>
+      <div class="mb-3">
+        <label>Key</label>
+        <input type="text" id="carKey" class="form-control" placeholder="Key">
+      </div>
+      <button class="btn btn-outline-success w-100" onclick="storeRecord()">Store Records</button>
+    </div>
+  </div>
+
+  <!-- Retrieve Records -->
+  <div class="col-md-4 d-flex">
+    <div class="card p-4 flex-fill">
+      <h5 class="text-center text-primary">Enter Key to Retrieve Item</h5>
+      <div class="mb-3">
+        <label>Key</label>
+        <input type="text" id="retrieveKey" class="form-control" placeholder="Key">
+      </div>
+      <button class="btn btn-outline-primary w-100" onclick="retrieveRecord()">Retrieve Records</button>
+      <p id="retrieveResult" class="mt-3 text-center fw-bold"></p>
+    </div>
+  </div>
+
+  <!-- Delete Records -->
+  <div class="col-md-4 d-flex">
+    <div class="card p-4 flex-fill">
+      <h5 class="text-center text-primary ">Enter Key to Delete Item</h5>
+      <div class="mb-3">
+        <label>Key</label>
+        <input type="text" id="deleteKey" class="form-control" placeholder="Key">
+      </div>
+      <button class="btn btn-outline-danger w-100" onclick="deleteRecord()">Remove Records</button>
+    </div>
+  </div>
+
+</div>
+
+ <!-- Clear All -->
+    <div class="clear-btn mt-4" onclick="clearAllRecords()">Clear All Records</div>
+  </div>
+
+
+
+  <script>
+    // Store data in localStorage
+    function storeRecord() {
+      const brand = document.getElementById("carBrand").value;
+      const price = document.getElementById("carPrice").value;
+      const key = document.getElementById("carKey").value;
+
+      if (brand && price && key) {
+        const car = { brand, price };
+        localStorage.setItem(key, JSON.stringify(car));
+        alert("Record Stored Successfully!");
+      } else {
+        alert("Please fill all fields!");
+      }
+    }
+
+    // Retrieve data
+    function retrieveRecord() {
+      const key = document.getElementById("retrieveKey").value;
+      const data = localStorage.getItem(key);
+
+      if (data) {
+        const car = JSON.parse(data);
+        document.getElementById("retrieveResult").innerText =
+          `Brand: ${car.brand}, Price: ${car.price}`;
+      } else {
+        document.getElementById("retrieveResult").innerText = "No record found!";
+      }
+    }
+
+    // Delete a record
+    function deleteRecord() {
+      const key = document.getElementById("deleteKey").value;
+      if (localStorage.getItem(key)) {
+        localStorage.removeItem(key);
+        alert("Record Deleted Successfully!");
+      } else {
+        alert("No record found with that key!");
+      }
+    }
+
+    // Clear all records
+    function clearAllRecords() {
+      localStorage.clear();
+      alert("All Records Cleared!");
+    }
+  </script>
+
+</body>
+</html>

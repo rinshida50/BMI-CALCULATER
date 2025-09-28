@@ -92,6 +92,16 @@
     // Handle Employee Form Submission
     document.getElementById("employeeForm").addEventListener("submit", function(event){
       event.preventDefault();
+      
+
+      // Show username in welcome message
+window.onload = function() {
+  const username = localStorage.getItem("username");
+  if (username) {
+    document.getElementById("welcomeText").textContent = "Welcome " + username;
+  }
+};
+
 
       const emp = {
         id: document.getElementById("empId").value,
